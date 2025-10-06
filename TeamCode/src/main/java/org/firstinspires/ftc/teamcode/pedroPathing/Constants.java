@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
-    .mass(13);
+    .mass(5.1);
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("rf")
@@ -28,23 +28,26 @@ public class Constants {
 
     public static Follower createFollower(HardwareMap hardwareMap) {
         return new FollowerBuilder(followerConstants, hardwareMap)
+                .threeWheelLocalizer(localizerConstants)
                 .pathConstraints(pathConstraints)
                 .mecanumDrivetrain(driveConstants)
-                .threeWheelLocalizer(localizerConstants)
+
                 .build();
     }
     public static ThreeWheelConstants localizerConstants = new ThreeWheelConstants()
             .forwardTicksToInches(.001989436789)
             .strafeTicksToInches(.001989436789)
             .turnTicksToInches(.001989436789)
-            .leftPodY(1)
-            .rightPodY(-1)
-            .strafePodX(-2.5)
+            .leftPodY(8)
+            .rightPodY(-8)
+            .strafePodX(-14.25)
             .leftEncoder_HardwareMapName("leftFront")
             .rightEncoder_HardwareMapName("rightRear")
             .strafeEncoder_HardwareMapName("rightFront")
             .leftEncoderDirection(Encoder.FORWARD)
             .rightEncoderDirection(Encoder.FORWARD)
-            .strafeEncoderDirection(Encoder.FORWARD);
-
+            .strafeEncoderDirection(Encoder.FORWARD)
+            .forwardTicksToInches(48);
+            //.strafeTicksToInches(48)
+            //.turnTicksToInches(360);
 }
