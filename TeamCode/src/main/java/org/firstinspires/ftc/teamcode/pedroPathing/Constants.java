@@ -12,18 +12,21 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
-    .mass(5.1);
+    .mass(5.1)
+    .forwardZeroPowerAcceleration(-57.43275565148078)
+            .lateralZeroPowerAcceleration(-69.06466312501034);
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("rf")
             .rightRearMotorName("rr")
             .leftRearMotorName("lr")
             .leftFrontMotorName("lf")
-            .leftFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
+            .leftFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
+            .leftRearMotorDirection(DcMotorSimple.Direction.FORWARD)
             .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD);
-
+            .rightRearMotorDirection(DcMotorSimple.Direction.REVERSE)
+            .xVelocity(81.19377975013016)
+            .yVelocity(62.394072724315606);
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
 
     public static Follower createFollower(HardwareMap hardwareMap) {
@@ -35,19 +38,17 @@ public class Constants {
                 .build();
     }
     public static ThreeWheelConstants localizerConstants = new ThreeWheelConstants()
-            .forwardTicksToInches(.001989436789)
-            .strafeTicksToInches(.001989436789)
-            .turnTicksToInches(.001989436789)
+            .forwardTicksToInches(.002011254)
+            .strafeTicksToInches(.001982816263068474)
+            .turnTicksToInches(.002011254)
             .leftPodY(8)
             .rightPodY(-8)
             .strafePodX(-14.25)
-            .leftEncoder_HardwareMapName("leftFront")
-            .rightEncoder_HardwareMapName("rightRear")
-            .strafeEncoder_HardwareMapName("rightFront")
-            .leftEncoderDirection(Encoder.FORWARD)
-            .rightEncoderDirection(Encoder.FORWARD)
-            .strafeEncoderDirection(Encoder.FORWARD)
-            .forwardTicksToInches(48);
-            //.strafeTicksToInches(48)
-            //.turnTicksToInches(360);
+            .leftEncoder_HardwareMapName("lr")
+            .rightEncoder_HardwareMapName("rr")
+            .strafeEncoder_HardwareMapName("lf")
+            .leftEncoderDirection(Encoder.REVERSE)
+            .rightEncoderDirection(Encoder.REVERSE)
+            .strafeEncoderDirection(Encoder.REVERSE);
+
 }
