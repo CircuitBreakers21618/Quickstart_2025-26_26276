@@ -13,7 +13,7 @@ public class teleop extends OpMode {
     DcMotor shooter;
     Gamepad currentGamepad2 = new Gamepad();
     Gamepad previousGamepad2 = new Gamepad();
-    int intake = 0;
+   // int intake = 0;
 
     @Override
     public void init() {
@@ -21,7 +21,7 @@ public class teleop extends OpMode {
         lr = hardwareMap.get(DcMotor.class, "lr");
         rf = hardwareMap.get(DcMotor.class, "rf");
         rr = hardwareMap.get(DcMotor.class, "rr");
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
+        //intake = hardwareMap.get(DcMotor.class, "intake");
 
 
 
@@ -34,7 +34,7 @@ public class teleop extends OpMode {
         rf.setPower(-gamepad1.right_stick_y + gamepad1.left_stick_x * 1.1 -gamepad1.right_stick_x);
         rr.setPower(gamepad1.right_stick_y + gamepad1.left_stick_x * 1.1 + gamepad1.right_stick_x);
 
-
+/*
         if (currentGamepad2.b && !previousGamepad2.b) {
             if (intake == 1) { //position 0 -> 1
 
@@ -51,7 +51,8 @@ public class teleop extends OpMode {
                 intake = 1;
 
             }
-        }
+
+        }*/
 
 
 
